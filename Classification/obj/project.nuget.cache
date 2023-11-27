@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "7A70NNTxI4Bw8ylY1he/0qKDtN8tOHCa+2uZLYrqkBFh7kv+qhg7iluNipcnSEgCwn6YBQqIsLZQPJukfj42iA==",
+  "dgSpecHash": "/516yssjzv21dqoHw6wTnKFGk1jbXH00iXHL1a7Z1ONYZJG7O4m1L7rWNa2UO8zze6XFbucbGlbirFFAVv8j1A==",
   "success": true,
   "projectFilePath": "C:\\Users\\NikitaChernevskiy\\OneDrive - Awara IT EOOD\\Projects\\Competitions\\QBFA\\Classification\\Classification\\Test.csproj",
   "expectedPackageFiles": [
@@ -32,6 +32,7 @@
     "C:\\Users\\NikitaChernevskiy\\.nuget\\packages\\microsoft.quantum.csharpgeneration\\0.28.302812\\microsoft.quantum.csharpgeneration.0.28.302812.nupkg.sha512",
     "C:\\Users\\NikitaChernevskiy\\.nuget\\packages\\microsoft.quantum.entrypointdriver\\0.28.302812\\microsoft.quantum.entrypointdriver.0.28.302812.nupkg.sha512",
     "C:\\Users\\NikitaChernevskiy\\.nuget\\packages\\microsoft.quantum.machinelearning\\0.28.302812\\microsoft.quantum.machinelearning.0.28.302812.nupkg.sha512",
+    "C:\\Users\\NikitaChernevskiy\\.nuget\\packages\\microsoft.quantum.numerics\\0.28.302812\\microsoft.quantum.numerics.0.28.302812.nupkg.sha512",
     "C:\\Users\\NikitaChernevskiy\\.nuget\\packages\\microsoft.quantum.qsharp.core\\0.28.302812\\microsoft.quantum.qsharp.core.0.28.302812.nupkg.sha512",
     "C:\\Users\\NikitaChernevskiy\\.nuget\\packages\\microsoft.quantum.qsharp.foundation\\0.28.302812\\microsoft.quantum.qsharp.foundation.0.28.302812.nupkg.sha512",
     "C:\\Users\\NikitaChernevskiy\\.nuget\\packages\\microsoft.quantum.runtime.core\\0.28.302812\\microsoft.quantum.runtime.core.0.28.302812.nupkg.sha512",

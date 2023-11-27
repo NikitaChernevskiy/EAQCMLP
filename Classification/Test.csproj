@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Quantum.MachineLearning" Version="0.28.302812" />
+    <PackageReference Include="Microsoft.Quantum.Numerics" Version="0.28.302812" />
   </ItemGroup>
 
 </Project>

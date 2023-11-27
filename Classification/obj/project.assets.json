@@ -715,6 +715,25 @@
           }
         }
       },
+      "Microsoft.Quantum.Numerics/0.28.302812": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Quantum.Runtime.Core": "0.28.302812",
+          "Microsoft.Quantum.Simulators": "0.28.302812",
+          "Microsoft.Quantum.Standard": "0.28.302812",
+          "Microsoft.Quantum.Targets.Interfaces": "0.28.302812"
+        },
+        "compile": {
+          "lib/net6.0/Microsoft.Quantum.Numerics.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.Quantum.Numerics.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "Microsoft.Quantum.QSharp.Core/0.28.302812": {
         "type": "package",
         "dependencies": {
@@ -3453,6 +3472,21 @@
         "lib/net6.0/Microsoft.Quantum.MachineLearning.pdb",
         "microsoft.quantum.machinelearning.0.28.302812.nupkg.sha512",
         "microsoft.quantum.machinelearning.nuspec",
+        "qdk-nuget-icon.png"
+      ]
+    },
+    "Microsoft.Quantum.Numerics/0.28.302812": {
+      "sha512": "dt87WF3uzbW8Df6kd0iDM0pdVtQSXYxmFVomgRopeSHa0QLz+VX+YhASO85N6/GZeNUtpqFX0Mse3bPAHVlzcw==",
+      "type": "package",
+      "path": "microsoft.quantum.numerics/0.28.302812",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net6.0/Microsoft.Quantum.Numerics.dll",
+        "lib/net6.0/Microsoft.Quantum.Numerics.pdb",
+        "lib/net6.0/Microsoft.Quantum.Numerics.xml",
+        "microsoft.quantum.numerics.0.28.302812.nupkg.sha512",
+        "microsoft.quantum.numerics.nuspec",
         "qdk-nuget-icon.png"
       ]
     },
@@ -7482,6 +7516,7 @@
       "Microsoft.Quantum.CSharpGeneration >= 0.28.302812",
       "Microsoft.Quantum.EntryPointDriver >= 0.28.302812",
       "Microsoft.Quantum.MachineLearning >= 0.28.302812",
+      "Microsoft.Quantum.Numerics >= 0.28.302812",
       "Microsoft.Quantum.QSharp.Core >= 0.28.302812",
       "Microsoft.Quantum.Runtime.Core >= 0.28.302812",
       "Microsoft.Quantum.Standard >= 0.28.302812",
@@ -7544,6 +7579,10 @@
             "autoReferenced": true
           },
           "Microsoft.Quantum.MachineLearning": {
+            "target": "Package",
+            "version": "[0.28.302812, )"
+          },
+          "Microsoft.Quantum.Numerics": {
             "target": "Package",
             "version": "[0.28.302812, )"
           },

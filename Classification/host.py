@@ -1,25 +1,33 @@
 import json
-import time
 import numpy as np
 import matplotlib.pyplot as plt
 import qsharp
-
+import qsharp.azure
 plt.style.use('ggplot')
+from qsharp import azure
+from azure.quantum import Workspace
+from azure.quantum.optimization import Problem, Solver
+import time
 
 from Microsoft.Quantum.Samples import TrainHalfMoonModel
 
 # Azure Quantum workspace information
-workspace_info = {
-    "resource_id": "REPLACE_WITH_YOUR_RESOURCE_ID",
-    "location": "REPLACE_WITH_YOUR_LOCATION"
-}
-
+subscription_id = "[yourdata]"
+resource_group = "[yourdata]"
+workspace_name = "[yourdata]"
+location = "[yourdata]"
+workspace = Workspace(subscription_id=subscription_id, resource_group=resource_group, name=workspace_name, location=location)
+targets = qsharp.azure.connect(
+            resourceId = "[yourdata]",
+            location = "[yourdata]")
 # Directly set the Azure Quantum target
-qsharp.client.default_target = "microsoft.estimator"
+qsharp.azure.target("microsoft.estimator")
 
 def train_and_classify(file_path):
     with open(file_path) as f:
         data = json.load(f)
+        #print(type(data_tuple))
+        #data = list(data_tuple)
 
     start_time = time.time()
 
@@ -31,14 +39,36 @@ def train_and_classify(file_path):
     ]
 
     # Submit the Q# operation to Azure Quantum
-    (parameters, bias) = TrainHalfMoonModel.simulate(
-        trainingVectors=data['TrainingData']['Features'],
-        trainingLabels=data['TrainingData']['Labels'],
-        initialParameters=parameter_starting_points
-    )
+    trainingVectors=data['TrainingData']['Features']
+    trainingLabels=data['TrainingData']['Labels']
+    initialParameters=parameter_starting_points
+    
+    floral = [row[0] for row in trainingVectors]
+    bees = [row[1] for row in trainingVectors]
+    
+    val1 = [row[0] for row in initialParameters]
+    val2 = [row[1] for row in initialParameters]
+    val3 = [row[3] for row in initialParameters]
+    val4 = [row[4] for row in initialParameters]
+    
+    try:
+        (parameters, bias) = qsharp.azure.execute(TrainHalfMoonModel, floral=floral, bees=bees, trainingLabels=trainingLabels, _1=val1, _2=val2, _3=val3, _4=val4, shots=1, jobName=f"Train the model with {file_path}", timeout=3600)
+    except Exception as e:
+        print(f"Got error: {e}")
+        latest_job = max(workspace.list_jobs(), key=lambda job: job.details.creation_time)
+        while latest_job.details.status == "Executing":
+            time.sleep(10)
+            latest_job.refresh()
+            print(f"Current job status: {latest_job.details.status}")
+        
+    #(parameters, bias) = TrainHalfMoonModel(
+        #trainingVectors=data['TrainingData']['Features'],
+        #trainingLabels=data['TrainingData']['Labels'],
+        #initialParameters=parameter_starting_points
+    #)
 
     end_time = time.time()
-    training_time = (end_time - start_time)/1.3
+    training_time = (end_time - start_time)
     rows = len(data['TrainingData']['Features'])
 
     print(f"Training completed for {file_path}. Rows: {rows}. Time taken: {training_time} seconds")
@@ -53,6 +83,7 @@ if __name__ == "__main__":
     training_times = []
 
     for file in files:
+        time.sleep(10)
         file_path = f"{json_folder}/{file}"
         tasks, time_taken = train_and_classify(file_path)
         amount_tasks.append(tasks)

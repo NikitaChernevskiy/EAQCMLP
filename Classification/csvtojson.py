@@ -10,7 +10,7 @@ json_directory = 'jsons'
 os.makedirs(json_directory, exist_ok=True)
 
 # Process each CSV file
-for i in range(1, 11):  # Assuming 6 CSV files with sequential numbering
+for i in range(1, 11):  # Assuming 10 CSV files with sequential numbering
     csv_filename = os.path.join(csv_directory, f"{i}00.csv")
     json_filename = os.path.join(json_directory, f"data{i}.json")
 
@@ -21,25 +21,29 @@ for i in range(1, 11):  # Assuming 6 CSV files with sequential numbering
         reader = csv.DictReader(csv_file)
         rows = list(reader)  # Convert the reader to a list of dictionaries for easier indexing
         for row in rows:
-            # Extract relevant columns
-            round_value = float(row['Round'])
-            amount_bees = float(row['Bees'])
-            floral = float(row['Floral'])
-            type_value = row['Type']
+            try:
+                # Extract relevant columns
+                round_value = float(row['Round'])
+                amount_bees = float(row['Bees'])
+                floral = float(row['Floral'])
+                type_value = row['Type']
 
-            # Create a feature from Floral and Amount_Bees
-            feature = [floral, amount_bees]
+                # Create a feature from Floral and Amount_Bees
+                feature = [floral, amount_bees]
 
-            # Assign label based on the condition
-            label = 1 if type_value == "HLS" else 0
+                # Assign label based on the condition
+                label = 1 if type_value == "HLS" else 0 if type_value == "ELS" else None
 
-            # Decide which set to add the data to
-            if len(validation_data["Features"]) < 1:
-                validation_data["Features"].append(feature)
-                validation_data["Labels"].append(label)
-            else:
-                training_data["Features"].append(feature)
-                training_data["Labels"].append(label)
+                # Decide which set to add the data to
+                if label is not None:
+                    if len(validation_data["Features"]) < 2:
+                        validation_data["Features"].append(feature)
+                        validation_data["Labels"].append(label)
+                    else:
+                        training_data["Features"].append(feature)
+                        training_data["Labels"].append(label)
+            except Exception as e:
+                print(f"Error processing row in file {csv_filename}: {e}")
 
     # Create the final JSON structure
     json_data = {
