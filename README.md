@@ -22,11 +22,11 @@ pip install -U pip
 pip install -U matplotlib
 pip install numpy 
 ```
-![Terminal](https://github.com/NikitaChernevskiy/EAQCMLP/assets/117015781/f9a4f24a-6c61-4d7a-ae15-cac716f787df)
+![Terminal](./Assets/OpenTerminal.png)
 
 7. Трябва да промените тази част от кода във файла host.py - данните може да намерите на главната страница на Azure Ресурса за Квантови Сервиси
-![Files](https://github.com/NikitaChernevskiy/EAQCMLP/assets/117015781/e66224ed-03e5-403b-96a3-ae129c21f29d)
-![Data](https://github.com/NikitaChernevskiy/EAQCMLP/assets/117015781/4ce28b34-3e4a-40d5-b9a3-df4f3c884dc2)
+![Files](./Assets/ChangeDataInFile.png)
+![Data](./Assets/AzureData.png)
 
 9. За да стартирате проекта, в терминала трябва да напишете командата python host.py
 
