@@ -12,22 +12,20 @@ import time
 from Microsoft.Quantum.Samples import TrainHalfMoonModel
 
 # Azure Quantum workspace information
-subscription_id = "[yourdata]"
-resource_group = "[yourdata]"
-workspace_name = "[yourdata]"
-location = "[yourdata]"
+subscription_id = "f1feebb9-e901-472c-8846-d7076253f241"
+resource_group = "AzureQuantum"
+workspace_name = "NikitaDemo"
+location = "eastus"
 workspace = Workspace(subscription_id=subscription_id, resource_group=resource_group, name=workspace_name, location=location)
 targets = qsharp.azure.connect(
-            resourceId = "[yourdata]",
-            location = "[yourdata]")
+            resourceId = "/subscriptions/f1feebb9-e901-472c-8846-d7076253f241/resourceGroups/AzureQuantum/providers/Microsoft.Quantum/Workspaces/NikitaDemo",
+            location = "eastus")
 # Directly set the Azure Quantum target
 qsharp.azure.target("microsoft.estimator")
 
 def train_and_classify(file_path):
     with open(file_path) as f:
         data = json.load(f)
-        #print(type(data_tuple))
-        #data = list(data_tuple)
 
     start_time = time.time()
 
@@ -50,7 +48,7 @@ def train_and_classify(file_path):
     val2 = [row[1] for row in initialParameters]
     val3 = [row[3] for row in initialParameters]
     val4 = [row[4] for row in initialParameters]
-    
+    # Quantum computer
     try:
         (parameters, bias) = qsharp.azure.execute(TrainHalfMoonModel, floral=floral, bees=bees, trainingLabels=trainingLabels, _1=val1, _2=val2, _3=val3, _4=val4, shots=1, jobName=f"Train the model with {file_path}", timeout=3600)
     except Exception as e:
@@ -60,11 +58,9 @@ def train_and_classify(file_path):
             time.sleep(10)
             latest_job.refresh()
             print(f"Current job status: {latest_job.details.status}")
-        
+    # Regular computer
     #(parameters, bias) = TrainHalfMoonModel(
-        #trainingVectors=data['TrainingData']['Features'],
-        #trainingLabels=data['TrainingData']['Labels'],
-        #initialParameters=parameter_starting_points
+        #floral=floral, bees=bees, trainingLabels=trainingLabels, _1=val1, _2=val2, _3=val3, _4=val4
     #)
 
     end_time = time.time()
