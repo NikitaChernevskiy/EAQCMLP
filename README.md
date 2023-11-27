@@ -20,7 +20,7 @@ dotnet add package Microsoft.Quantum.MachineLearning
 pip install azure-ai-ml
 pip install -U pip
 pip install -U matplotlib
-pip install numpy
+pip install numpy 
 ```
 7. Трябва да промените тази част от кода във файла host.py - данните може да намерите на главната страница на Azure Ресурса за Квантови Сервиси 
    ![Files](https://github.com/NikitaChernevskiy/EAQCMLP/assets/117015781/e66224ed-03e5-403b-96a3-ae129c21f29d)
