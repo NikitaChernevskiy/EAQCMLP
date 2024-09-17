@@ -1,4 +1,41 @@
-# Setting Up the Project for Personal Development
+# Quantum Computing in Machine Learning: Performance Analysis
+
+## Overview
+
+This project explores the potential of quantum computers to enhance machine learning algorithms. It provides researchers in the field of artificial intelligence with a platform to evaluate the efficiency of quantum computing in their specific applications. The project includes integrating custom datasets and algorithms to analyze the impact of quantum technologies on key metrics such as training speed and modeling accuracy.
+
+## Goals
+
+- **Development of an Analytical Tool**: Create a tool that allows researchers in machine learning and artificial intelligence to embed and analyze their datasets and algorithms in a quantum computing environment.
+
+- **Testing and Validation of Methodology**: Conduct extensive experiments to test various machine learning models using quantum computing, in order to evaluate their performance and accuracy compared to standard computational methods.
+
+## Features
+
+- **Integration with Azure Quantum Workspace**: Utilize Microsoft's Azure Quantum Workspace to provide direct access to quantum computing capabilities.
+
+- **Support for Custom Datasets**: Allow users to input their own datasets and machine learning algorithms for analysis.
+
+- **Comparison of Classical and Quantum Computing**: Perform experiments on both classical and quantum computers to compare performance metrics.
+
+- **Open Source**: The project is licensed under the GNU General Public License, encouraging community contributions and shared improvements.
+
+## Architecture
+
+The architecture is designed to be scalable, efficient, secure, and user-friendly.
+
+- **Scalability**: Easily adapts to increasing data processing requirements and model complexity.
+
+- **Efficiency**: Integration with quantum computational resources promises significant improvements in data processing speed and analysis.
+
+- **Security**: Built-in measures for data protection ensure that all operations with datasets and models are safeguarded.
+
+- **User-Friendly Interface**: An intuitive interface facilitates the process of working with the tool.
+
+## Installation
+
+### Prerequisites
+
 1. Create an Azure Quantum Workspace Resource - https://learn.microsoft.com/en-us/azure/quantum/how-to-create-workspace
 2. Download the project https://github.com/NikitaChernevskiy/EAQCMLP to a specific location (e.g., `C:/`)
 3. Download and install:
@@ -31,7 +68,7 @@ pip install numpy
 
 9. To start the project, in the terminal you need to type the command `python host.py`
 
-# Working with Personal Data
+## Working with Personal Data
 
 The project works with JSON in a specific format. To achieve this, we need to use the files `csvappend.py` and `csvtojson.py`, and for data—`OriginalData.csv`.
 
@@ -63,4 +100,4 @@ The project works with JSON in a specific format. To achieve this, we need to us
   }
 }
 ```
-When working with your own data, keep in mind that although your dataset may contain more than two columns, the model is designed to train correctly only with two columns. Therefore, in the JSON files, you should not include arrays with three elements if you aim for stable results. Additionally, remember that the first row of your dataset contains the column headers, so you need to generate the new tables with the required number of data rows plus one to account for the headers. The csvtojson.py script intentionally skips the first row.
+When working with your own data, keep in mind that although your dataset may contain more than two columns, the model is designed to train correctly only with two columns. Therefore, in the JSON files, you should not include arrays with three elements if you aim for stable results. Also, please remember that the first row of your dataset contains the column headers, so you'll need to generate the new tables with the required number of data rows plus one to account for the headers. The csvtojson.py script intentionally skips the first row.
